@@ -3,286 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Talabartería Chillán</title>
+    <title>Tarjeta Digital - Talabarteria_Chillan</title>
+    
+    <meta name="theme-color" content="#2c1810">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Georgia', 'Garamond', serif;
-        }
-
-        body {
-            background: url('cuero1.jpeg') center/cover no-repeat fixed;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card {
-            background: linear-gradient(145deg, #2c1810, #1a0f0a);
-            width: 100vw;
-            height: 100vh;
-            height: 100dvh;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            border: none;
-        }
-                                     
-         .header {
-            background: url('cuero1.jpeg') no-repeat;
-            background-position: center;
-            background-size: 100% 100%; /* Se estira para encajar perfecto */
-            padding: 4.0vh 5vw;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            flex-shrink: 0;
-         }
-
-        
-        
-
-        .logo {
-            width: 12vh;
-            height: 12vh;
-            max-width: 130px;
-            max-height: 130px;
-            margin: 0 auto 1vh;
-            border-radius: 50%;
-            overflow: hidden;
-            background: rgba(245, 222, 179, 0.1);
-            border: 3px solid #F5DEB3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .subtitle {
-            color: #F5DEB3;
-            font-size: clamp(10px, 3vh, 20px);
-            font-weight: normal;
-            font-style: italic;
-            letter-spacing: 2px;
-            text-shadow: 3px 2px 4px rgba(0,0,0,0.5);
-            position: relative;
-            z-index: 1;
-        }
-
-        .content {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1.8vh 5vw;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5vh;
-            padding: 1.7vh 4vw;
-            background: rgba(139, 69, 19, 0.15);
-            border-radius: 5px;
-            border-left: 3px solid #8B4513;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-        
-        .info-item:hover {
-            background: rgba(139, 69, 19, 0.25);
-            transform: translateX(5px);
-        }
-
-        .icon {
-            font-size: clamp(20px, 3.2vh, 24px);
-            margin-right: 4vw;
-            min-width: 30px;
-            text-align: center;
-            color: #d6ccbe;
-        }
-
-        .info-text {
-            color: #e1c48e;
-            font-size: clamp(16px, 2.2vh, 16px);
-            line-height: 1.4;
-            flex: 1;
-        }
-
-        .info-text a {
-            color: #f3dbbb;
-            text-decoration: none;
-        }
-
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #8B4513, transparent);
-            margin: 1vh 0;
-            flex-shrink: 0;
-        }
-
-        .qr-section {
-            text-align: center;
-            padding: 2.0vh 0;
-            background: rgba(245, 222, 179, 0.05);
-            margin: 1vh 0;
-            border-radius: 0.6px;
-            flex-shrink: 0;
-        }
-
-        .qr-code {
-            background: white;
-            padding: 1.2vh;
-            border-radius: 0.7px;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            width: 15vh;
-            height: 15vh;
-            max-width: 160px;
-            max-height: 160px;
-        }
-
-        .qr-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .qr-label {
-            color: #DEB887;
-            margin-top: 0.7vh;
-            font-size: clamp(9px, 1.8vh, 13px);
-            font-style: italic;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 1.5vh 4vw;
-            background: rgba(139, 69, 19, 0.2);
-            color: #D2B48C;
-            font-size: clamp(10px, 1.6vh, 12px);
-            flex-shrink: 0;
-            line-height: 1.4;
-            font-style: italic;
-        }
-
-        /* Ocultar scrollbar */
-        .content::-webkit-scrollbar {
-            display: none;
-        }
-        .content {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        /* Ajustes para pantallas muy pequeñas */
-        @media (max-height: 600px) {
-            .header {
-                padding: 2.5vh 5vw;
-            }
-            .logo {
-                width: 9vh;
-                height: 9vh;
-                margin-bottom: 1vh;
-            }
-            .info-item {
-                padding: 1.3vh 4vw;
-                margin-bottom: 1.3vh;
-            }
-            .qr-section {
-                padding: 1.5vh 0;
-                margin: 1vh 0;
-            }
-            .qr-code {
-                width: 14vh;
-                height: 14vh;
-            }
-        }
-
-        @media (max-height: 500px) {
-            .qr-section {
-                display: none;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="card">
+  <div class="card">
+        <!-- HEADER -->
         <div class="header">
             <div class="logo">
-                <img src="logo.jpg" alt="Logo Chillán">
+                <img src="https://res.cloudinary.com/qokzwciw/image/upload/v1794610723/logo_Talabarteria_chillan.png" alt="Logo Mi Galería">
             </div>
             <div class="subtitle">Talabartería Chillán</div>
+            <div class="subtitle">Contactos</div>
         </div>
 
-        <div class="content">
-            <div class="info-item">
-                <div class="icon"><i class="fas fa-globe"></i></div>
-                <div class="info-text">
-                    <a href="https://web-talabarteria-Chillán.vercel.app/" target="_blank">talabarteriaChillán.cl</a>
-                </div>
+        <!-- CARRUSEL 3D (6 IMÁGENES) -->
+        <div class="carousel-container" id="carousel">
+            <div class="box" id="box">
+                <span style="--i:0;">
+                    <div class="card-3d active">
+                        <img src="https://res.cloudinary.com/qokzwciw/image/upload/v1794610727/Cintur%C3%B3n_de_cuero_en_taller_artesanal.png" alt="Obra 1">
+                    </div>
+                </span>
+                <span style="--i:1;">
+                    <div class="card-3d">
+                        <img src="https://res.cloudinary.com/qokzwciw/image/upload/v1794610728/Cintur%C3%B3n_de_cuero_r%C3%BAstico_con_hebilla_forjada.png" alt="Obra 2">
+                    </div>
+                </span>
+                <span style="--i:2;">
+                    <div class="card-3d">
+                        <img src="https://res.cloudinary.com/qokzwciw/image/upload/v1794610729/maletin.png" alt="Obra 3">
+                    </div>
+                </span>
+                <span style="--i:3;">
+                    <div class="card-3d">
+                        <img src="https://res.cloudinary.com/qokzwciw/image/upload/v1794610729/Montura.png" alt="Obra 4">
+                    </div>
+                </span>
+                <span style="--i:4;">
+                    <div class="card-3d">
+                        <img src="https://res.cloudinary.com/qokzwciw/image/upload/v1794610730/riendas.png" alt="Obra 5">
+                    </div>
+                </span>
+                <span style="--i:5;">
+                    <div class="card-3d">
+                        <img src="https://res.cloudinary.com/qokzwciw/image/upload/v1794610726/cabesera.png" alt="Obra 6">
+                    </div>
+                </span>
+            </div>
+        </div>
+
+       <!-- CONTACTOS MINIMALISTAS (ICONOS SUELTOS + WEB CENTRADA) -->
+        <div class="content"> 
+            <div class="social-icons">
+                <a href="https://www.instagram.com/talabarteria_chillan/" target="_blank" class="social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/56989574974" target="_blank" class="social-link" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="mailto:talabarteria.chillan87@gmail.com" class="social-link" aria-label="Correo">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
 
-            <div class="info-item">
-                <div class="icon"><i class="fab fa-instagram"></i></div>
-                <div class="info-text">
-                    <a href="https://www.instagram.com/talabarteriaChillán/" target="_blank">@talabarteriaChillán</a>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <div class="icon"><i class="fab fa-whatsapp"></i></div>
-                <div class="info-text">
-                    <a href="https://wa.me/56977710313" target="_blank">WhatsApp "Talabartería Chillán"</a>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <div class="icon"><i class="fas fa-phone"></i></div>
-                <div class="info-text">
-                    <a href="tel:56977710313">+56977710313</a>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                <div class="info-text">
-                    <a href="https://www.google.com/maps">
-                                               
-                    </a>
-                </div>
-            </div>
+           <div class="web-item-centered">
+             <a href="https://talabarteriachillan.cl" target="_blank">https://talabarteriachillan.cl</a>
+           </div>
 
             <div class="divider"></div>
+        </div>
 
-            <div class="qr-section">
-                <div class="qr-code">
-                    <img src="QR.png" alt="Código QR">
-                </div>
-                
+        <!-- SECCIÓN QR -->
+        <div class="qr-section">
+            <div class="qr-code">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31" shape-rendering="crispEdges" style="width: 100%; height: 100%; display: block;">
+                    <path fill="#ffffff" d="M0 0h31v31H0z"/>
+                    <path fill="#000000" d="M1 1h1v1H1zm1 0h1v1H2zm1 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm1 0h1v1H6zm1 0h1v1H7zm2 0h1v1H9zm3 0h1v1h-1zm3 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zM1 2h1v1H1zm6 0h1v1H7zm3 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm4 0h1v1h-1zm3 0h1v1h-1zm2 0h1v1h-1zm6 0h1v1h-1zM1 3h1v1H1zm2 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm2 0h1v1H7zm2 0h1v1H9zm4 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm3 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zM1 4h1v1H1zm2 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm2 0h1v1H7zm2 0h1v1H9zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zM1 5h1v1H1zm2 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm2 0h1v1H7zm3 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm4 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zM1 6h1v1H1zm6 0h1v1H7zm2 0h1v1H9zm4 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm6 0h1v1h-1zM1 7h1v1H1zm1 0h1v1H2zm1 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm1 0h1v1H6zm1 0h1v1H7zm2 0h1v1H9zm2 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zM9 8h1v1H9zm4 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zM1 9h1v1H1zm1 0h1v1H2zm2 0h1v1H4zm3 0h1v1H7zm1 0h1v1H8zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zM1 10h1v1H1zm1 0h1v1H2zm1 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm6 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zM1 11h1v1H1zm6 0h1v1H7zm3 0h1v1h-1zm3 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zM1 12h1v1H1zm4 0h1v1H5zm1 0h1v1H6zm2 0h1v1H8zm3 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm5 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zM1 13h1v1H1zm1 0h1v1H2zm1 0h1v1H3zm2 0h1v1H5zm1 0h1v1H6zm1 0h1v1H7zm6 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm3 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zM1 14h1v1H1zm1 0h1v1H2zm4 0h1v1H6zm3 0h1v1H9zm1 0h1v1h-1zm1 0h1v1h-1zm4 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zM1 15h1v1H1zm3 0h1v1H4zm1 0h1v1H5zm2 0h1v1H7zm3 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm4 0h1v1h-1zM1 16h1v1H1zm3 0h1v1H4zm2 0h1v1H6zm2 0h1v1H8zm1 0h1v1H9zm1 0h1v1h-1zm3 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm5 0h1v1h-1zM2 17h1v1H2zm1 0h1v1H3zm2 0h1v1H5zm1 0h1v1H6zm1 0h1v1H7zm1 0h1v1H8zm3 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm6 0h1v1h-1zM4 18h1v1H4zm1 0h1v1H5zm3 0h1v1H8zm1 0h1v1H9zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm5 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zM1 19h1v1H1zm2 0h1v1H3zm3 0h1v1H6zm1 0h1v1H7zm1 0h1v1H8zm1 0h1v1H9zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm5 0h1v1h-1zm2 0h1v1h-1zM1 20h1v1H1zm4 0h1v1H5zm1 0h1v1H6zm3 0h1v1H9zm1 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm4 0h1v1h-1zm2 0h1v1h-1zm5 0h1v1h-1zm1 0h1v1h-1zM1 21h1v1H1zm1 0h1v1H2zm2 0h1v1H4zm2 0h1v1H6zm1 0h1v1H7zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm-19 1h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zM1 23h1v1H1zm1 0h1v1H2zm1 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm1 0h1v1H6zm1 0h1v1H7zm2 0h1v1H9zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zM1 24h1v1H1zm6 0h1v1H7zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zM1 25h1v1H1zm2 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm2 0h1v1H7zm3 0h1v1h-1zm7 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zM1 26h1v1H1zm2 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm2 0h1v1H7zm2 0h1v1H9zm4 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zM1 27h1v1H1zm2 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm2 0h1v1H7zm4 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm2 0h1v1h-1zM1 28h1v1H1zm6 0h1v1H7zm2 0h1v1H9zm2 0h1v1h-1zm3 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm1 0h1v1h-1zm4 0h1v1h-1zm1 0h1v1h-1zm3 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zM1 29h1v1H1zm1 0h1v1H2zm1 0h1v1H3zm1 0h1v1H4zm1 0h1v1H5zm1 0h1v1H6zm1 0h1v1H7zm2 0h1v1H9zm1 0h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm1 0h1v1h-1zm7 0h1v1h-1zm3 0h1v1h-1zm2 0h1v1h-1z"/>
+                </svg>
             </div>
         </div>
 
+        <!-- TAGLINE Y FOOTER CRÉDITOS -->
         <div class="footer">
-            Artesanía en cuero de Alta calidad<br>
-            Riendas • Monturas • Accesorios
+            <p class="tagline">"El noble oficio del cuero en Chillán: piezas trabajadas con tradición, firmeza y carácter."</p>
+            <p class="credits">© 2026 TheAprendizIA2026-256. Todos los derechos reservados.<br>Código fuente en GitHub</p>
         </div>
-    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
