@@ -1,0 +1,283 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Georgia', 'Garamond', serif;
+    background-color: #0a0a0a;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+.header {
+    background: #121212;
+    padding: 2.5vh 5vw 1.5vh;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 16vh;
+    height: 16vh;
+    max-width: 140px;
+    max-height: 140px;
+    margin: 0 auto 1vh;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #000000;
+    border: 3px solid #F5DEB3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.subtitle {
+    color: #F5DEB3;
+    font-size: clamp(14px, 2.5vh, 18px);
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    position: relative;
+    z-index: 1;
+}
+
+/* CARRUSEL 3D (AJUSTADO EXACTAMENTE PARA 6 ELEMENTOS) */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+    flex-shrink: 0;
+    margin: 30px 0 30px;
+}
+
+.box {
+    position: relative;
+    width: 130px;
+    height: 180px;
+    transform-style: preserve-3d;
+    transform: rotateY(var(--rot, 0deg));
+}
+
+.box.smooth {
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.box span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    /* CORREGIDO: 60deg por elemento (360 / 6) y radio optimizado a 170px */
+    transform: rotateY(calc(var(--i) * 60deg)) translateZ(170px);
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+/* TARJETAS DEL CARRUSEL INACTIVAS */
+.card-3d {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(245, 222, 179, 0.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+    opacity: 0.5;
+    transition: all 0.4s ease;
+    background: #000;
+}
+
+.card-3d img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+
+/* TARJETA ACTIVA AL FRENTE */
+.card-3d.active {
+    opacity: 1;
+    transform: scale(1.15);
+    border: 1px solid rgba(245, 222, 179, 0.6);
+    box-shadow: 0 0 16px rgba(245, 222, 179, 0.3);
+}
+
+/* CONTENEDOR DE CONTACTOS */
+.content {
+    flex: none;
+    width: 100%;
+    padding: 1.5vh 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.social-link {
+    background: transparent;
+    border: none;
+    color: #F5DEB3;
+    font-size: clamp(28px, 3.2vh, 40px);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.social-link i {
+    color: #F5DEB3;
+}
+
+.social-link:hover,
+.social-link:active {
+    color: #ffffff;
+    transform: scale(1.3);
+}
+
+/* WEB CENTRADA */
+.web-item-centered {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 18px;
+    border: 1px solid rgba(245, 222, 179, 0.4);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    margin: 0 auto 20px auto;
+    width: fit-content;
+    box-shadow: 0 0 30px rgba(245, 222, 179, 0.2);
+    transition: all 0.3s ease;
+}
+
+.web-item-centered a {
+    color: #F5DEB3;
+    text-decoration: none;
+    font-size: clamp(14px, 2.5vh, 20px);
+    letter-spacing: 1.2px;
+    transition: color 0.3s ease;
+}
+
+.web-item-centered:hover {
+    transform: scale(1.08);
+    border-color: rgba(245, 222, 179, 0.8);
+    background: rgba(245, 245, 220, 0.05);
+}
+
+.divider {
+    width: 70%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #999, transparent);
+    margin: 1vh auto;
+    flex-shrink: 0;
+}
+
+/* SECCIÓN QR */
+.qr-section {
+    text-align: center;
+    padding: 2vh 0 3vh;
+    background: rgba(245, 222, 179, 0.03);
+    margin: 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-code {
+    background: #ffffff;
+    padding: 6px;
+    border-radius: 6px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    width: 15vh;
+    height: 15vh;
+    max-width: 120px;
+    max-height: 120px;
+    min-width: 90px;
+    min-height: 90px;
+}
+
+/* FOOTER Y CRÉDITOS */
+.footer {
+    text-align: center;
+    padding: 2vh 4vw 5vh;
+    background: rgba(245, 222, 179, 0.03);
+    color: #F5DEB3;
+    font-size: clamp(12px, 1.8vh, 15px);
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+.tagline {
+    font-style: italic;
+    margin-bottom: 14px;
+    font-size: clamp(12px, 2vh, 16px);
+}
+
+.credits {
+    font-size: 11px;
+    color: #8a8a8a;
+    letter-spacing: 0.5px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* RESPONSIVE LANDSCAPE */
+@media (orientation: landscape), (max-height: 550px) {
+    .header { padding: 10px 5vw; }
+    .logo { width: 60px !important; height: 60px !important; margin-bottom: 5px; }
+    .carousel-container { height: 260px; margin: 15px 0 25px; }
+    .box { width: 110px; height: 150px; }
+    /* CORREGIDO: 60deg y translateZ adaptado a horizontal */
+    .box span { transform: rotateY(calc(var(--i) * 60deg)) translateZ(140px); }
+    .qr-code { width: 80px !important; height: 80px !important; min-width: 80px !important; min-height: 80px !important; }
+}
