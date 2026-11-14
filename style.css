@@ -86,7 +86,7 @@ body {
     user-select: none;
     touch-action: pan-y;
     flex-shrink: 0;
-    margin: 30px 0 30px;
+    margin: 20px 0 20px;
 }
 
 .box {
